@@ -26,6 +26,8 @@ limitations under the License.
 #include <ESP32SharpIR.h>
 #include <QTRSensors.h>
 
+#define LED 2
+
 GamepadPtr myGamepads[BP32_MAX_GAMEPADS];
 
 // This callback gets called any time a new gamepad is connected.
@@ -63,6 +65,7 @@ void setup() {
 	ESP32PWM::allocateTimer(3);
 
     // TODO: Write your setup code here
+    pinMode(LED, OUTPUT);
 }
 
 // Arduino loop function. Runs in CPU 1
@@ -78,6 +81,9 @@ void loop() {
     }
 
     // TODO: Write your periodic code here
-
+    digitalWrite(LED, HIGH);
+    delay(1000);
+    digitalWrite(LED,LOW);
+    delay(1000);
     vTaskDelay(1);
 }
